@@ -11,14 +11,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './todo.css',
 })
 export class Todo {
-  tasks: Array<ToDo> = []
+  tasks: Array<ToDo> = [];
   taskTitle: string = "";
   taskDescription: string = "";
   editingTaskNumber: number = 0;
 
   constructor(private service: TodoService) {
     this.tasks = this.service.getTodos()
-    
+
   }
 
   resetForm() {
