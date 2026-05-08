@@ -1,3 +1,4 @@
+<body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-2"></div>
@@ -17,12 +18,13 @@
                 @if (editingTaskNumber === 0) {
                 <button type="submit" (click)="addNewTask()" class="btn btn-outline-primary"
                     [disabled]="taskTitle.length < 3">
-                    Add Task
+                    +Add Task
                 </button>
-                } @else {
-                <button type="submit" (click)="updateTask()" class="btn btn-outline-success"
+                }
+                @else {
+                <button type="submit" (click)="updateTask()" class="btn btn-outline-primary"
                     [disabled]="taskTitle.length < 3">
-                    Update Task
+                    ✏️Update Task
                 </button>
                 }
 
@@ -31,15 +33,15 @@
             <hr />
             <br />
             <h1>Tasks List</h1>
-            <table class="table">
+            <table class="task_table">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th> <!--  Created At Try -->
-                        <th scope="col">Title</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Update</th>
-                        <th scope="col">Delete</th>
+                        <th>ID</th> 
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,14 +49,14 @@
                     @for (task of tasks; track $index)
                     {
                     <tr>
-                        <th scope="row">{{task.id}}</th>
+                        <th>{{task.id}}</th>
                         <td>{{task.title | titlecase}}</td>
                         <td>{{task?.description | titlecase}}</td>
                         <td><input type="checkbox" (change)="toggleComplete(task.id)" [checked]="task.status"></td>
-                        <td><button class="btn btn-sm btn-outline-success" (click)="editTask(task.id)"
-                                [disabled]="task.status === true">Edit</button>
+                        <td><button class="btn btn-sm btn-outline-primary" (click)="editTask(task.id)"
+                                [disabled]="task.status === true">✏️Edit</button>
                         </td>
-                        <td><button class="btn btn-sm btn-outline-danger" (click)="deleteTask(task.id)">Delete</button>
+                        <td><button class="btn btn-sm btn-outline-danger" (click)="deleteTask(task.id)">❌Delete</button>
                         </td>
                     </tr>
                     }
@@ -64,3 +66,4 @@
         </div>
     </div>
 </div>
+</body>

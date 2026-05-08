@@ -9,14 +9,20 @@ export class TodoService {
 
   todos: Array<ToDo> = [
     {
-      id: 1768321799018,
+      id: 1,
       title: "Wake up",
-      description: "Win the morning to win the day!",
+      description: "Wake up early.",
       status: false
     },
     {
-      id: 1768321887473,
+      id: 2,
       title: "Take bath",
+      status: false
+    },
+    {
+      id: 3,
+      title: "Morning Alignment",
+      description:"Clear your workspace and prepare for first study block.",
       status: false
     },
 
@@ -27,7 +33,7 @@ export class TodoService {
 
   addTask(taskName: string, desc: any) {
     let todo = {
-      id: Date.now(),
+      id: this.todos.length + 1,
       title: taskName,
       description: desc,
       status: false
@@ -44,7 +50,7 @@ export class TodoService {
   updateTask(id: number, title: string, description: string) {
     const index = this.todos.findIndex(task => task.id === id)
     this.todos[index].title = title;
-    this.todos[index].description = description.length !== 0 ? description: "";
+    this.todos[index].description = description.length !== 0 ? description : "";
   }
 
 
